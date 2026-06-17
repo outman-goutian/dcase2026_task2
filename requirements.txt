@@ -1,0 +1,19 @@
+# Core runtime
+torch>=2.0.0
+torchaudio>=2.0.0
+transformers>=4.30.0
+safetensors>=0.4.0
+huggingface-hub>=0.20.0
+
+# Training and model utilities
+peft>=0.4.0
+timm>=0.4.5
+tqdm>=4.62.0
+pyyaml>=6.0
+
+# Data, scoring, and submission
+numpy>=1.21.0
+pandas>=1.3.0
+scikit-learn>=1.0.0
+imbalanced-learn>=0.10.0
+scipy>=1.8.0

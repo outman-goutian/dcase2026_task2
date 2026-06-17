@@ -1,0 +1,69 @@
+checkpoint:
+  resume_epoch: null
+data:
+  batch_size: 16
+  num_workers: 2
+  pin_memory: true
+  sample_rate: 16000
+  train_txt: /workspace/data/train.scp
+finetuning:
+  strategy: full
+logging:
+  log_dir: runs/lr_sweep_train_scp
+  log_interval: 10
+  save_dir: checkpoints_lr_sweep_train_scp/eat_base_full
+  tag: eat_top1_layers8_10_12_score_mean_domain_local_density_sum
+model:
+  arc_margin:
+    easy_margin: false
+    m: 0.5
+    s: 30.0
+  dropout: 0.1
+  feature_dim: 768
+  model_name: eat_base/model_noft.safetensors
+  norm_mean: -4.268
+  norm_std: 4.569
+  num_classes: 531
+  pooling: cls
+  target_length: 1024
+  trust_remote_code: true
+  type: eat
+training:
+  device: cuda
+  gpu_id:
+  - 0
+  learning_rate: 4.0e-05
+  max_grad_norm: 1.0
+  mixup_alpha: 0.4
+  num_epochs: 8
+  save_interval: 1
+  scheduler:
+    gamma: 0.5
+    step_size: 4
+  weight_decay: 0.02
+validation:
+  augmentation:
+    mixup_alpha: 0.25
+    skip_adasyn_machines:
+    - fan
+    use_adasyn: false
+    use_mixup: false
+  batch_size: 32
+  enabled: true
+  local_density_distance: l2
+  local_density_normalize_embedding: false
+  local_density_scale_mode: sum
+  local_density_source_k: 16
+  local_density_target_k: 9
+  n_clusters: 10
+  num_workers: 2
+  parallel_machines: false
+  score_method: knn_domain_local_density
+  scp_path: /workspace/data/test_dev.scp
+  top_k: 1
+  train_scp_path: /workspace/data/train.scp
+  embedding_layers:
+  - 8
+  - 10
+  - 12
+  layer_ensemble_mode: score_mean

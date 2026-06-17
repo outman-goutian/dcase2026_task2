@@ -1,0 +1,11 @@
+.git
+__pycache__
+*.pyc
+runs
+final_submission*
+inference_results
+*.zip
+checkpoints/
+beats/*.pt
+eat_base/*.safetensors
+data/*.scp
